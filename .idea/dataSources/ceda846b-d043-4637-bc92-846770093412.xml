@@ -116,8 +116,8 @@
     </schema>
     <schema id="28" parent="2" name="public">
       <ObjectId>36652</ObjectId>
-      <IntrospectionTimestamp>2018-07-16.16:59:19.175</IntrospectionTimestamp>
-      <IntrospectionStateNumber>182021</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-07-19.11:26:21.216</IntrospectionTimestamp>
+      <IntrospectionStateNumber>185875</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -132,34 +132,100 @@
       <ObjectId>36678</ObjectId>
       <StateNumber>182021</StateNumber>
     </table>
-    <column id="31" parent="30" name="id">
+    <table id="31" parent="28" name="user_role">
+      <ObjectId>36937</ObjectId>
+      <StateNumber>185875</StateNumber>
+    </table>
+    <table id="32" parent="28" name="usr">
+      <ObjectId>36940</ObjectId>
+      <StateNumber>185875</StateNumber>
+    </table>
+    <column id="33" parent="30" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>182021</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="32" parent="30" name="tag">
+    <column id="34" parent="30" name="tag">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>182021</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="33" parent="30" name="text">
+    <column id="35" parent="30" name="text">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>182021</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="34" parent="30" name="massege_pkey">
+    <index id="36" parent="30" name="massege_pkey">
       <ObjectId>36684</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="35" parent="30" name="massege_pkey">
+    <key id="37" parent="30" name="massege_pkey">
       <ObjectId>36685</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>massege_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="38" parent="31" name="user_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>185873</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="39" parent="31" name="role">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>185873</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="40" parent="31" name="fkfpm8swft53ulq2hl11yplpr5">
+      <ObjectId>36948</ObjectId>
+      <ColNames>user_id</ColNames>
+      <RefTableId>36940</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>usr</RefTableName>
+      <RefKeyName>usr_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="41" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>185874</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="42" parent="32" name="user_active">
+      <Position>2</Position>
+      <DataType>boolean|0</DataType>
+      <StateNumber>185874</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="43" parent="32" name="user_name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>185874</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="44" parent="32" name="user_password">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>185874</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="45" parent="32" name="usr_pkey">
+      <ObjectId>36946</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="46" parent="32" name="usr_pkey">
+      <ObjectId>36947</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>usr_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
   </database-model>

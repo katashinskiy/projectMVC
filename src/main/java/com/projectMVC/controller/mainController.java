@@ -19,10 +19,8 @@ public class mainController {
     private MaseggeRepository maseggeRepositiry;
 
 
-    @GetMapping("/home")
-     public String greeting(@RequestParam(name = "name", required = false, defaultValue = "world")
-                           String name, Map<String,Object> model){
-        model.put("name", name);
+    @GetMapping("/")
+     public String greeting(Map<String,Object> model){
         return "home";
     }
 
