@@ -17,10 +17,15 @@ public class Massege {
     @Column(name = "tag")
     private String tag;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
+
     public Massege() {
     }
 
-    public Massege(String text, String tag) {
+    public Massege(String text, String tag, User author) {
+        this.author = author;
         this.text = text;
         this.tag = tag;
     }
@@ -49,5 +54,16 @@ public class Massege {
         this.tag = tag;
     }
 
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public String getAuthorName(){
+        return author == null? "<none>" : author.getUserName();
+    }
 
 }

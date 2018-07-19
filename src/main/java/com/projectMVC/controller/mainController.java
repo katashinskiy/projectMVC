@@ -2,8 +2,10 @@ package com.projectMVC.controller;
 
 
 import com.projectMVC.entity.Massege;
+import com.projectMVC.entity.User;
 import com.projectMVC.repository.MaseggeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,8 +34,11 @@ public class mainController {
     }
 
     @PostMapping("/main")
-    public String add(@RequestParam String text, @RequestParam String tag, Map<String,Object> model){
-        Massege massege = new Massege(text,tag);
+    public String add(
+            @AuthenticationPrincipal User user,
+            @RequestParam String text,
+            @RequestParam String tag, Map<String,Object> model){
+        Massege massege = new Massege(text,tag, user);
         maseggeRepositiry.save(massege);
 
         Iterable<Massege> masseges = maseggeRepositiry.findAll();
