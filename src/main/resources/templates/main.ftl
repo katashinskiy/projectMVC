@@ -2,7 +2,7 @@
 <#import "parts/login.ftl" as L>
 <@S.page>
 <@L.logout />
-
+<a href = "/Users"> User List</a>
 <form method="post">
     <input type="text" name="text" placeholder="Введите текст"/>
     <input type="text" name="tag" placeholder="Введите тег"/>
