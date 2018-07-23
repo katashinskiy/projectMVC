@@ -39,6 +39,10 @@ public class User implements UserDetails{
         this.userActive = userActive;
     }
 
+    public boolean isAdmin(){
+        return role.contains(Role.ADMIN);
+    }
+
     public Integer getId() {
         return id;
     }
