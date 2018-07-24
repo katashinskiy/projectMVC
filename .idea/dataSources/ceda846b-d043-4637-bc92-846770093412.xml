@@ -116,8 +116,8 @@
     </schema>
     <schema id="28" parent="2" name="public">
       <ObjectId>36652</ObjectId>
-      <IntrospectionTimestamp>2018-07-20.08:53:11.221</IntrospectionTimestamp>
-      <IntrospectionStateNumber>186376</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-07-24.08:04:30.463</IntrospectionTimestamp>
+      <IntrospectionStateNumber>189277</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -138,7 +138,7 @@
     </table>
     <table id="32" parent="28" name="usr">
       <ObjectId>36940</ObjectId>
-      <StateNumber>186376</StateNumber>
+      <StateNumber>189277</StateNumber>
     </table>
     <column id="33" parent="30" name="id">
       <Position>1</Position>
@@ -238,12 +238,24 @@
       <StateNumber>185874</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="48" parent="32" name="usr_pkey">
+    <column id="48" parent="32" name="activ_code">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>189276</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="49" parent="32" name="email">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>189277</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="50" parent="32" name="usr_pkey">
       <ObjectId>36946</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="49" parent="32" name="usr_pkey">
+    <key id="51" parent="32" name="usr_pkey">
       <ObjectId>36947</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>usr_pkey</UnderlyingIndexName>
