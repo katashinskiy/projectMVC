@@ -28,51 +28,54 @@
     <database id="9" parent="1" name="office_farmacy">
       <ObjectId>25777</ObjectId>
     </database>
-    <database id="10" parent="1" name="konex24">
-      <ObjectId>26950</ObjectId>
-    </database>
-    <database id="11" parent="1" name="check">
+    <database id="10" parent="1" name="check">
       <ObjectId>28277</ObjectId>
     </database>
-    <database id="12" parent="1" name="university">
+    <database id="11" parent="1" name="university">
       <ObjectId>28362</ObjectId>
     </database>
-    <database id="13" parent="1" name="konex24_">
+    <database id="12" parent="1" name="konex24_">
       <ObjectId>34186</ObjectId>
     </database>
-    <role id="14" parent="1" name="barman">
+    <database id="13" parent="1" name="pharmacy_2">
+      <ObjectId>39253</ObjectId>
+    </database>
+    <database id="14" parent="1" name="pharmacy_1">
+      <ObjectId>41054</ObjectId>
+    </database>
+    <role id="15" parent="1" name="barman">
       <ObjectId>28135</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
       <CanLogin>1</CanLogin>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="15" parent="1" name="pg_monitor">
+    <role id="16" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="16" parent="1" name="pg_read_all_settings">
+    <role id="17" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="17" parent="1" name="pg_read_all_stats">
+    <role id="18" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="18" parent="1" name="pg_signal_backend">
+    <role id="19" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="19" parent="1" name="pg_stat_scan_tables">
+    <role id="20" parent="1" name="pg_stat_scan_tables">
       <ObjectId>3377</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="20" parent="1" name="postgres">
+    <role id="21" parent="1" name="postgres">
       <ObjectId>10</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
@@ -83,7 +86,7 @@
       <ConnectionLimit>-1</ConnectionLimit>
       <BypassRls>1</BypassRls>
     </role>
-    <role id="21" parent="1" name="samsung">
+    <role id="22" parent="1" name="samsung">
       <ObjectId>16384</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
@@ -92,171 +95,165 @@
       <CanLogin>1</CanLogin>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="22" parent="1" name="stream_barman">
+    <role id="23" parent="1" name="stream_barman">
       <ObjectId>28136</ObjectId>
       <Inherit>1</Inherit>
       <CanLogin>1</CanLogin>
       <Replication>1</Replication>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <schema id="23" parent="2" name="pg_catalog">
+    <schema id="24" parent="2" name="pg_catalog">
       <ObjectId>11</ObjectId>
     </schema>
-    <schema id="24" parent="2" name="pg_toast">
+    <schema id="25" parent="2" name="pg_toast">
       <ObjectId>99</ObjectId>
     </schema>
-    <schema id="25" parent="2" name="pg_temp_1">
+    <schema id="26" parent="2" name="pg_temp_1">
       <ObjectId>11736</ObjectId>
     </schema>
-    <schema id="26" parent="2" name="pg_toast_temp_1">
+    <schema id="27" parent="2" name="pg_toast_temp_1">
       <ObjectId>11737</ObjectId>
     </schema>
-    <schema id="27" parent="2" name="information_schema">
+    <schema id="28" parent="2" name="information_schema">
       <ObjectId>12705</ObjectId>
     </schema>
-    <schema id="28" parent="2" name="public">
-      <ObjectId>36652</ObjectId>
-      <IntrospectionTimestamp>2018-07-24.08:04:30.463</IntrospectionTimestamp>
-      <IntrospectionStateNumber>189277</IntrospectionStateNumber>
+    <schema id="29" parent="2" name="public">
+      <ObjectId>42855</ObjectId>
+      <IntrospectionTimestamp>2018-07-25.10:26:47.259</IntrospectionTimestamp>
+      <IntrospectionStateNumber>388615</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <sequence id="29" parent="28" name="hibernate_sequence">
-      <ObjectId>36666</ObjectId>
-      <StateNumber>181815</StateNumber>
+    <sequence id="30" parent="29" name="hibernate_sequence">
+      <ObjectId>42856</ObjectId>
+      <StateNumber>388610</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="30" parent="28" name="massege">
-      <ObjectId>36678</ObjectId>
-      <StateNumber>186376</StateNumber>
+    <table id="31" parent="29" name="massege">
+      <ObjectId>42858</ObjectId>
+      <StateNumber>388614</StateNumber>
     </table>
-    <table id="31" parent="28" name="user_role">
-      <ObjectId>36937</ObjectId>
-      <StateNumber>185875</StateNumber>
+    <table id="32" parent="29" name="user_role">
+      <ObjectId>42866</ObjectId>
+      <StateNumber>388615</StateNumber>
     </table>
-    <table id="32" parent="28" name="usr">
-      <ObjectId>36940</ObjectId>
-      <StateNumber>189277</StateNumber>
+    <table id="33" parent="29" name="usr">
+      <ObjectId>42869</ObjectId>
+      <StateNumber>388615</StateNumber>
     </table>
-    <column id="33" parent="30" name="id">
+    <column id="34" parent="31" name="id">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
+      <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>182021</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>388611</StateNumber>
+      <TypeId>20</TypeId>
     </column>
-    <column id="34" parent="30" name="tag">
+    <column id="35" parent="31" name="tag">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>182021</StateNumber>
+      <StateNumber>388611</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="35" parent="30" name="text">
+    <column id="36" parent="31" name="text">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>182021</StateNumber>
+      <StateNumber>388611</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="36" parent="30" name="author">
+    <column id="37" parent="31" name="user_id">
       <Position>4</Position>
-      <DataType>bytea|0</DataType>
-      <StateNumber>186362</StateNumber>
-      <TypeId>17</TypeId>
+      <DataType>bigint|0</DataType>
+      <StateNumber>388611</StateNumber>
+      <TypeId>20</TypeId>
     </column>
-    <column id="37" parent="30" name="user_id">
-      <Position>5</Position>
-      <DataType>integer|0</DataType>
-      <StateNumber>186375</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <index id="38" parent="30" name="massege_pkey">
-      <ObjectId>36684</ObjectId>
+    <index id="38" parent="31" name="massege_pkey">
+      <ObjectId>42864</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="39" parent="30" name="massege_pkey">
-      <ObjectId>36685</ObjectId>
+    <key id="39" parent="31" name="massege_pkey">
+      <ObjectId>42865</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>massege_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="40" parent="30" name="fk6hjoibt0j6vbhxme9npscrcqx">
-      <ObjectId>36953</ObjectId>
+    <foreign-key id="40" parent="31" name="fk6hjoibt0j6vbhxme9npscrcqx">
+      <ObjectId>42877</ObjectId>
       <ColNames>user_id</ColNames>
-      <RefTableId>36940</RefTableId>
+      <RefTableId>42869</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>usr</RefTableName>
       <RefKeyName>usr_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="41" parent="31" name="user_id">
+    <column id="41" parent="32" name="user_id">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
+      <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>185873</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>388612</StateNumber>
+      <TypeId>20</TypeId>
     </column>
-    <column id="42" parent="31" name="role">
+    <column id="42" parent="32" name="role">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>185873</StateNumber>
+      <StateNumber>388612</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="43" parent="31" name="fkfpm8swft53ulq2hl11yplpr5">
-      <ObjectId>36948</ObjectId>
+    <foreign-key id="43" parent="32" name="fkfpm8swft53ulq2hl11yplpr5">
+      <ObjectId>42882</ObjectId>
       <ColNames>user_id</ColNames>
-      <RefTableId>36940</RefTableId>
+      <RefTableId>42869</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>usr</RefTableName>
       <RefKeyName>usr_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="44" parent="32" name="id">
+    <column id="44" parent="33" name="id">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
+      <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>185874</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>388613</StateNumber>
+      <TypeId>20</TypeId>
     </column>
-    <column id="45" parent="32" name="user_active">
+    <column id="45" parent="33" name="activ_code">
       <Position>2</Position>
-      <DataType>boolean|0</DataType>
-      <StateNumber>185874</StateNumber>
-      <TypeId>16</TypeId>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>388613</StateNumber>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="46" parent="32" name="user_name">
+    <column id="46" parent="33" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>185874</StateNumber>
+      <StateNumber>388613</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="47" parent="32" name="user_password">
+    <column id="47" parent="33" name="user_active">
       <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <StateNumber>185874</StateNumber>
-      <TypeId>1043</TypeId>
+      <DataType>boolean|0</DataType>
+      <StateNumber>388613</StateNumber>
+      <TypeId>16</TypeId>
     </column>
-    <column id="48" parent="32" name="activ_code">
+    <column id="48" parent="33" name="user_name">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>189276</StateNumber>
+      <StateNumber>388613</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="49" parent="32" name="email">
+    <column id="49" parent="33" name="user_password">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>189277</StateNumber>
+      <StateNumber>388613</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="50" parent="32" name="usr_pkey">
-      <ObjectId>36946</ObjectId>
+    <index id="50" parent="33" name="usr_pkey">
+      <ObjectId>42875</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="51" parent="32" name="usr_pkey">
-      <ObjectId>36947</ObjectId>
+    <key id="51" parent="33" name="usr_pkey">
+      <ObjectId>42876</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>usr_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
