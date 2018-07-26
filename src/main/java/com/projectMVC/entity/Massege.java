@@ -1,6 +1,9 @@
 package com.projectMVC.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Massege")
@@ -11,9 +14,12 @@ public class Massege {
     @Column(name = "id")
     private Integer id;
 
+    @NotBlank(message = "Please fill the message")
+    @Length(max = 2048, message = "message too long more than(2048)")
     @Column(name = "text")
     private String text;
 
+    @NotBlank(message = "Please input tag")
     @Column(name = "tag")
     private String tag;
 
@@ -63,7 +69,7 @@ public class Massege {
     }
 
     public String getAuthorName(){
-        return author == null? "<none>" : author.getUserName();
+        return author == null? "<none>" : author.getUsername();
     }
 
 }

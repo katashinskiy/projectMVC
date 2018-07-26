@@ -8,12 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+import javax.validation.Valid;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Controller
 public class mainController {
@@ -23,21 +28,21 @@ public class mainController {
 
 
     @GetMapping("/")
-     public String greeting(Map<String,Object> model){
+    public String greeting(Map<String, Object> model) {
         return "home";
     }
 
     @GetMapping("/main")
-    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model){
+    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
         Iterable<Massege> masseges;
-        if(filter != null && filter.isEmpty()){
+        if (filter != null && filter.isEmpty()) {
             masseges = maseggeRepositiry.findAll();
-        }else{
+        } else {
             masseges = maseggeRepositiry.findByTag(filter);
         }
 
 
-        model.addAttribute("masseges", masseges);
+        model.addAttribute("messages", masseges);
 
         return "main";
     }
@@ -45,18 +50,26 @@ public class mainController {
     @PostMapping("/main")
     public String add(
             @AuthenticationPrincipal User user,
-            @RequestParam String text,
-            @RequestParam String tag,
-            Model model){
+            @Valid Massege massege,
+            BindingResult bindingResult,
+            Model model) {
 
-        Massege massege = new Massege(text,tag, user);
-        maseggeRepositiry.save(massege);
+        if (bindingResult.hasErrors()) {
+            Map<String, String> collect = ControllerUtils.getError(bindingResult);
+
+            model.mergeAttributes(collect);
+            model.addAttribute("message", massege);
+        } else {
+            massege.setAuthor(user);
+            maseggeRepositiry.save(massege);
+        }
 
 
         Iterable<Massege> massegesAll = maseggeRepositiry.findAll();
-        model.addAttribute("masseges", massegesAll);
+        model.addAttribute("messages", massegesAll);
         return "main";
     }
+
 
 }
 
