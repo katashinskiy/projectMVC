@@ -26,32 +26,43 @@ public class RegistrationController {
     private UserService userService;
 
     @GetMapping("/registration")
-    public String registration(){
+    public String registration() {
         return "registration";
     }
 
     @PostMapping("/registration")
     public String addUser(
-            @Valid User user , BindingResult bindingResult , Model model){
+            @Valid User user, BindingResult bindingResult, Model model) {
 
-
-        if(!userService.addUser(user)){
-            model.addAttribute("message","User exist!!!");
-
-            return "/registration";
+        if (user.getPassword() != null && !user.getPassword().equals(user.getPassword2())) {
+            model.addAttribute("passwordError", "Passwords are different!");
+            return "registration";
         }
+
+        if (bindingResult.hasErrors()) {
+            model.mergeAttributes(ControllerUtils.getError(bindingResult));
+            return "registration";
+        }
+
+
+        if (!userService.addUser(user)) {
+            model.addAttribute("usernameError", "User exist!!!");
+
+                    return "registration";
+        }
+
+
 
         return "redirect:/login";
     }
 
     @GetMapping("/activate/{code}")
-    public String activatrdPage(@PathVariable String code, Model model){
+    public String activatrdPage(@PathVariable String code, Model model) {
         boolean isActivated = userService.isActivated(code);
 
-        if(isActivated){
+        if (isActivated) {
             model.addAttribute("message", "Activation Successful)))");
-        }
-        else{
+        } else {
             model.addAttribute("message", "Activation not successful(((");
         }
         return "login";
