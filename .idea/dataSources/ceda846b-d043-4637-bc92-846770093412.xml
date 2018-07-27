@@ -118,71 +118,71 @@
       <ObjectId>12705</ObjectId>
     </schema>
     <schema id="29" parent="2" name="public">
-      <ObjectId>42855</ObjectId>
-      <IntrospectionTimestamp>2018-07-26.09:59:26.912</IntrospectionTimestamp>
-      <IntrospectionStateNumber>388615</IntrospectionStateNumber>
+      <ObjectId>42978</ObjectId>
+      <IntrospectionTimestamp>2018-07-27.11:31:58.582</IntrospectionTimestamp>
+      <IntrospectionStateNumber>389616</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
     <sequence id="30" parent="29" name="hibernate_sequence">
-      <ObjectId>42856</ObjectId>
-      <StateNumber>388610</StateNumber>
+      <ObjectId>42999</ObjectId>
+      <StateNumber>389614</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
     <table id="31" parent="29" name="massege">
-      <ObjectId>42858</ObjectId>
-      <StateNumber>388614</StateNumber>
+      <ObjectId>42980</ObjectId>
+      <StateNumber>389615</StateNumber>
     </table>
     <table id="32" parent="29" name="user_role">
-      <ObjectId>42866</ObjectId>
-      <StateNumber>388615</StateNumber>
+      <ObjectId>42988</ObjectId>
+      <StateNumber>389616</StateNumber>
     </table>
     <table id="33" parent="29" name="usr">
-      <ObjectId>42869</ObjectId>
-      <StateNumber>388615</StateNumber>
+      <ObjectId>42991</ObjectId>
+      <StateNumber>389616</StateNumber>
     </table>
     <column id="34" parent="31" name="id">
       <Position>1</Position>
-      <DataType>bigint|0</DataType>
+      <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>388611</StateNumber>
-      <TypeId>20</TypeId>
+      <StateNumber>389611</StateNumber>
+      <TypeId>23</TypeId>
     </column>
     <column id="35" parent="31" name="tag">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>388611</StateNumber>
+      <StateNumber>389611</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="36" parent="31" name="text">
       <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <StateNumber>388611</StateNumber>
+      <DataType>varchar(2048)|0</DataType>
+      <StateNumber>389611</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="37" parent="31" name="user_id">
       <Position>4</Position>
-      <DataType>bigint|0</DataType>
-      <StateNumber>388611</StateNumber>
-      <TypeId>20</TypeId>
+      <DataType>integer|0</DataType>
+      <StateNumber>389611</StateNumber>
+      <TypeId>23</TypeId>
     </column>
     <index id="38" parent="31" name="massege_pkey">
-      <ObjectId>42864</ObjectId>
+      <ObjectId>42986</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="39" parent="31" name="massege_pkey">
-      <ObjectId>42865</ObjectId>
+      <ObjectId>42987</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>massege_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="40" parent="31" name="fk6hjoibt0j6vbhxme9npscrcqx">
-      <ObjectId>42877</ObjectId>
+      <ObjectId>43001</ObjectId>
       <ColNames>user_id</ColNames>
-      <RefTableId>42869</RefTableId>
+      <RefTableId>42991</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>usr</RefTableName>
       <RefKeyName>usr_pkey</RefKeyName>
@@ -190,21 +190,21 @@
     </foreign-key>
     <column id="41" parent="32" name="user_id">
       <Position>1</Position>
-      <DataType>bigint|0</DataType>
+      <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>388612</StateNumber>
-      <TypeId>20</TypeId>
+      <StateNumber>389612</StateNumber>
+      <TypeId>23</TypeId>
     </column>
     <column id="42" parent="32" name="role">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>388612</StateNumber>
+      <StateNumber>389612</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <foreign-key id="43" parent="32" name="fkfpm8swft53ulq2hl11yplpr5">
-      <ObjectId>42882</ObjectId>
+      <ObjectId>43006</ObjectId>
       <ColNames>user_id</ColNames>
-      <RefTableId>42869</RefTableId>
+      <RefTableId>42991</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>usr</RefTableName>
       <RefKeyName>usr_pkey</RefKeyName>
@@ -212,48 +212,48 @@
     </foreign-key>
     <column id="44" parent="33" name="id">
       <Position>1</Position>
-      <DataType>bigint|0</DataType>
+      <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>388613</StateNumber>
-      <TypeId>20</TypeId>
+      <StateNumber>389613</StateNumber>
+      <TypeId>23</TypeId>
     </column>
     <column id="45" parent="33" name="activ_code">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>388613</StateNumber>
+      <StateNumber>389613</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="46" parent="33" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>388613</StateNumber>
+      <StateNumber>389613</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="47" parent="33" name="user_active">
+    <column id="47" parent="33" name="user_password">
       <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>389613</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="48" parent="33" name="user_active">
+      <Position>5</Position>
       <DataType>boolean|0</DataType>
-      <StateNumber>388613</StateNumber>
+      <StateNumber>389613</StateNumber>
       <TypeId>16</TypeId>
     </column>
-    <column id="48" parent="33" name="user_name">
-      <Position>5</Position>
-      <DataType>varchar(255)|0</DataType>
-      <StateNumber>388613</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="49" parent="33" name="user_password">
+    <column id="49" parent="33" name="user_name">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>388613</StateNumber>
+      <StateNumber>389613</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="50" parent="33" name="usr_pkey">
-      <ObjectId>42875</ObjectId>
+      <ObjectId>42997</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="51" parent="33" name="usr_pkey">
-      <ObjectId>42876</ObjectId>
+      <ObjectId>42998</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>usr_pkey</UnderlyingIndexName>
       <Primary>1</Primary>

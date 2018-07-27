@@ -9,11 +9,13 @@ import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.Collections;
 import java.util.Map;
 
@@ -30,14 +32,9 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(
-            @RequestParam String username,
-            @RequestParam String email,
-            @RequestParam String password, Model model){
+            @Valid User user , BindingResult bindingResult , Model model){
 
-        User user = new User();
-        user.setUserPassword(password);
-        user.setUserName(username);
-        user.setEmail(email);
+
         if(!userService.addUser(user)){
             model.addAttribute("message","User exist!!!");
 

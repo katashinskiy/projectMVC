@@ -30,19 +30,19 @@ public class UserService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return userRepository.findByUserName(s);
+        return userRepository.findByUsername(s);
     }
 
     public boolean addUser(User user){
-        User userFromDb = userRepository.findByUserName(user.getUserName());
+        User userFromDb = userRepository.findByUsername(user.getUsername());
         if(userFromDb != null){
             return false;
         }
 
-        if(user.getUserName() != null || user.getUserPassword() != null || user.getEmail() != null){
+        if(user.getUsername() != null || user.getPassword() != null || user.getEmail() != null){
 
             user.setUserActive(true);
-            user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setRole(Collections.singleton(Role.USER));
             user.setActivationCode(UUID.randomUUID().toString());
             userRepository.save(user);
@@ -58,7 +58,7 @@ public class UserService implements UserDetailsService{
         String message = String.format(
                 "Hello %s \n " +
                         "Welcome to our Site. Please visit next link: http://localhost:8080/activate/%s",
-                user.getUserName(),user.getActivationCode()
+                user.getUsername(),user.getActivationCode()
         );
 
 
@@ -105,7 +105,7 @@ public class UserService implements UserDetailsService{
         }
 
         if(!StringUtils.isEmpty(password)){
-            user.setUserPassword(password);
+            user.setPassword(password);
         }
 
         userRepository.save(user);

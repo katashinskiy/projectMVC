@@ -17,10 +17,10 @@ public class User implements UserDetails{
     private Integer id;
 
     @Column(name = "user_name")
-    private String userName;
+    private String username;
 
     @Column(name = "user_password")
-    private String userPassword;
+    private String password;
 
     @Column(name = "user_active")
     private boolean userActive;
@@ -40,8 +40,8 @@ public class User implements UserDetails{
     }
 
     public User(String userName, String userPassword, boolean userActive) {
-        this.userName = userName;
-        this.userPassword = userPassword;
+        this.username = userName;
+        this.password = userPassword;
         this.userActive = userActive;
     }
 
@@ -57,21 +57,6 @@ public class User implements UserDetails{
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
 
     public boolean isUserActive() {
         return userActive;
@@ -94,15 +79,6 @@ public class User implements UserDetails{
         return getRole();
     }
 
-    @Override
-    public String getPassword() {
-        return userPassword;
-    }
-
-    @Override
-    public String getUsername() {
-        return userName;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -138,5 +114,21 @@ public class User implements UserDetails{
 
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

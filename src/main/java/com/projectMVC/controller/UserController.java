@@ -60,7 +60,7 @@ public class UserController {
         }
 
 
-        user.setUserName(userName);
+        user.setUsername(userName);
 
         userService.update(user);
 
@@ -71,7 +71,7 @@ public class UserController {
 
     @GetMapping("/profile")
     public String profile(Model model, @AuthenticationPrincipal User user){
-        model.addAttribute("Username", user.getUserName());
+        model.addAttribute("Username", user.getUsername());
         model.addAttribute("email",user.getEmail());
         return "profile";
     }
