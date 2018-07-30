@@ -38,10 +38,6 @@ public class User implements UserDetails{
     @Column(name = "activ_code")
     private String activationCode;
 
-    @Transient
-    @NotBlank(message = "Confirm password can't be empty")
-    private String password2;
-
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -143,11 +139,4 @@ public class User implements UserDetails{
         this.password = password;
     }
 
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
 }
