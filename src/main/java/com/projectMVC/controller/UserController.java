@@ -85,4 +85,12 @@ public class UserController {
 
         return "redirect:/main";
     }
+
+    @GetMapping("/delete")
+    public String deleteUser(@RequestParam("id") Integer id,Model model)
+    {
+        userService.delete(id);
+        model.addAttribute("users", userService.findAll());
+        return "Users";
+    }
 }
