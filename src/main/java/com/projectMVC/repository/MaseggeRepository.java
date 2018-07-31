@@ -12,5 +12,6 @@ public interface MaseggeRepository extends JpaRepository<Massege,Integer> {
 
     List<Massege> findByTag(String teg);
     Massege findById(Long id);
+    void deleteById(Integer id);
 
 }

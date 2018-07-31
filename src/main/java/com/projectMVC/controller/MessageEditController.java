@@ -42,10 +42,9 @@ public class MessageEditController {
             @AuthenticationPrincipal User currentUser,
             @RequestParam("id") Massege massege,
             @RequestParam("text") String text,
-            @RequestParam("tag") String tag,
-            @PathVariable("User") User user
+            @RequestParam("tag") String tag
     ) {
-        if(massege.getAuthor().equals(currentUser)){
+        if(massege.getAuthor().equals(currentUser) || currentUser.isAdmin()){
 
             if(!StringUtils.isEmpty(text)){
                 massege.setText(text);
