@@ -34,6 +34,11 @@
                 <a class="nav-link" href="/registration">Registration <span class="sr-only">(current)</span></a>
             </li>
             </#if>
+            <#if user??>
+            <li class="nav-item ">
+                <a class="nav-link" href="/messages/${UserId}">My messages<span class="sr-only">(current)</span></a>
+            </li>
+            </#if>
         </ul>
         <div class="navbar-text mr-2">${Username}</div>
         <@L.logout />

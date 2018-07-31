@@ -1,14 +1,3 @@
-<#import "parts/common.ftl" as S>
-
-<@S.page>
-<div class="form-rov">
-    <div class="form-group col-md-6">
-        <form method="get" action="/main" class="form-inline">
-            <input class="form-control " type="text" name="filter" placeholder="Search message"/>
-            <button class="btn btn-primary ml-3" type="submit">Search</button>
-        </form>
-    </div>
-</div>
 <a class="btn btn-primary m-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
    aria-controls="collapseExample">
     Message Editor
@@ -40,7 +29,6 @@
         </div>
     </div>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <input type="hidden" name="id" value="<#if message??>${message.id}</#if>"/>
     <button class="btn btn-primary mt-1 mb-1" type="submit"> Save </button>
 </form>
-<#include "parts/messageList.ftl"/>
-</@S.page>

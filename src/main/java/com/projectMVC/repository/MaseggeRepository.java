@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MaseggeRepository extends CrudRepository<Massege,Integer> {
+public interface MaseggeRepository extends JpaRepository<Massege,Integer> {
 
     List<Massege> findByTag(String teg);
+    Massege findById(Long id);
+
 }
