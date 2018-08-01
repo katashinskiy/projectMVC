@@ -109,7 +109,7 @@ public class UserService implements UserDetailsService{
         }
 
         if(!StringUtils.isEmpty(password)){
-            user.setPassword(password);
+            user.setPassword(passwordEncoder.encode(password));
         }
 
         userRepository.save(user);
@@ -122,5 +122,15 @@ public class UserService implements UserDetailsService{
 
     public void delete(Integer id){
         userRepository.deleteById(id);
+    }
+
+    public void subscribeUser(User currentUser, User user) {
+        user.getSubscribers().add(currentUser);
+        userRepository.save(user);
+    }
+
+    public void unsubscribeUser(User currentUser, User user) {
+        user.getSubscribers().remove(currentUser);
+        userRepository.save(user);
     }
 }

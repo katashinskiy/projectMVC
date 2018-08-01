@@ -13,23 +13,25 @@
             <li class="nav-item ">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
+            <#if user??>
             <li class="nav-item ">
                 <a class="nav-link" href="/main">Main <span class="sr-only">(current)</span></a>
             </li>
+            </#if>
             <#if isAdmin>
             <li class="nav-item ">
                 <a class="nav-link" href="/Users">Users <span class="sr-only">(current)</span></a>
             </li>
             </#if>
-            <li class="nav-item ">
-                <a class="nav-link" href="/login">Sing in <span class="sr-only">(current)</span></a>
-            </li>
             <#if user??>
             <li class="nav-item ">
                 <a class="nav-link" href="/Users/profile">Profile<span class="sr-only">(current)</span></a>
             </li>
             </#if>
             <#if !known>
+            <li class="nav-item ">
+                <a class="nav-link" href="/login">Sing in <span class="sr-only">(current)</span></a>
+            </li>
             <li class="nav-item ">
                 <a class="nav-link" href="/registration">Registration <span class="sr-only">(current)</span></a>
             </li>

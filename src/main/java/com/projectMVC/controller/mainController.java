@@ -77,7 +77,6 @@ public class mainController {
     @GetMapping("/main/delete")
     public String deleteMessage(Model model,
                                 @RequestParam("messageId") Integer id){
-
         maseggeRepositiry.deleteById(id);
         model.addAttribute("messages", maseggeRepositiry.findAll());
         return "main";

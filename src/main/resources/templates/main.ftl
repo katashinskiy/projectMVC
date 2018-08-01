@@ -11,7 +11,7 @@
 </div>
 <a class="btn btn-primary m-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
    aria-controls="collapseExample">
-    Message Editor
+    Add new message
 </a>
 <form method="post" id="collapseExample" class="collapse <#if message??>show</#if>">
     <div class="form-group row">

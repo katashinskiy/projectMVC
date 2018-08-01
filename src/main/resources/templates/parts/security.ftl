@@ -9,7 +9,7 @@
 
 <#else >
     <#assign
-    Username = "unknow"
+    Username = "Please, sing in"
     isAdmin = false
     UserId = -1
     >

@@ -30,6 +30,10 @@ public class MessageEditController {
         Set<Massege> masseges = user.getMessages();
 
 
+        model.addAttribute("userChannel", user);
+        model.addAttribute("subscriptionsCount", user.getSubscriptions().size());
+        model.addAttribute("subscriberCount", user.getSubscribers().size());
+        model.addAttribute("isSubscribe", user.getSubscribers().contains(currentUser));
         model.addAttribute("messages", masseges);
         model.addAttribute("message", message);
         model.addAttribute("isCurrentUser", currentUser.equals(user));

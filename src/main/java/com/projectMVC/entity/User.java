@@ -7,12 +7,13 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "usr")
-public class User implements UserDetails{
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,6 +48,22 @@ public class User implements UserDetails{
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Massege> messages;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_subscriptions",
+            joinColumns = {@JoinColumn(name = "subscription_id")},
+            inverseJoinColumns = { @JoinColumn(name = "subscriber_id")}
+    )
+    private Set<User> subscribers = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_subscriptions",
+            joinColumns = { @JoinColumn (name = "subscriber_id")},
+            inverseJoinColumns = { @JoinColumn (name = "subscription_id")}
+    )
+    private Set<User> subscriptions = new HashSet<>();
+
     public User() {
     }
 
@@ -56,7 +73,7 @@ public class User implements UserDetails{
         this.userActive = userActive;
     }
 
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return role.contains(Role.ADMIN);
     }
 
@@ -163,5 +180,21 @@ public class User implements UserDetails{
     public int hashCode() {
 
         return Objects.hash(id);
+    }
+
+    public Set<User> getSubscribers() {
+        return subscribers;
+    }
+
+    public void setSubscribers(Set<User> subscribers) {
+        this.subscribers = subscribers;
+    }
+
+    public Set<User> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(Set<User> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 }
