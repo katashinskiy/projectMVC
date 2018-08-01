@@ -25,17 +25,17 @@ public class UserController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
-    public String userInf(Model model){
+    public String userInf(Model model) {
 
-        model.addAttribute("users",  userService.findAll());
+        model.addAttribute("users", userService.findAll());
         return "Users";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("{userId}")
-    public String userEditForm(@PathVariable Integer userId, Model model){
+    public String userEditForm(@PathVariable Integer userId, Model model) {
         User user = userService.findById(userId);
-        model.addAttribute("User",user);
+        model.addAttribute("User", user);
         model.addAttribute("Role", Role.values());
         return "UserEdit";
     }
@@ -43,9 +43,9 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public String editUser(
-            @RequestParam Map<String,String>  form,
+            @RequestParam Map<String, String> form,
             @RequestParam("userId") User user,
-            @RequestParam String userName){
+            @RequestParam String userName) {
 
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
@@ -53,8 +53,8 @@ public class UserController {
 
         user.getRole().clear();
 
-        for(String key : form.keySet()) {
-            if(roles.contains(key)){
+        for (String key : form.keySet()) {
+            if (roles.contains(key)) {
                 user.getRole().add(Role.valueOf(key));
             }
         }
@@ -68,27 +68,63 @@ public class UserController {
     }
 
 
-
     @GetMapping("/profile")
-    public String profile(Model model, @AuthenticationPrincipal User user){
+    public String profile(Model model, @AuthenticationPrincipal User user) {
+
         model.addAttribute("Username", user.getUsername());
-        model.addAttribute("email",user.getEmail());
+        model.addAttribute("email", user.getEmail());
+
         return "profile";
     }
 
     @PostMapping("/profile")
     public String editInf(@RequestParam String email,
                           @RequestParam String password,
-                          @AuthenticationPrincipal User user){
+                          @RequestParam String password2,
+                          @AuthenticationPrincipal User user,
+                          Model model) {
 
-        userService.updateProfile(user,email,password);
+        String errorMessageD;
+        String errorMessageP1;
+        String errorMessageP2;
+
+        if (password == null || password.isEmpty()) {
+            errorMessageP1 = "Password can't be empty";
+            model.addAttribute("password2",password2);
+            model.addAttribute("errorMessageP1", errorMessageP1);
+            model.addAttribute("Username", user.getUsername());
+            model.addAttribute("email", user.getEmail());
+            if (password2 == null || password2.isEmpty()) {
+                errorMessageP2 = "Confirm password can't be empty";
+                model.addAttribute("errorMessageP2", errorMessageP2);
+            }
+            return "profile";
+        }
+
+        if (password2 == null || password2.isEmpty()) {
+            errorMessageP2 = "Confirm password can't be empty";
+            model.addAttribute("password",password);
+            model.addAttribute("errorMessageP2", errorMessageP2);
+            model.addAttribute("Username", user.getUsername());
+            model.addAttribute("email", user.getEmail());
+            return "profile";
+        }
+
+        if (!password.equals(password2)) {
+            errorMessageD = "Confirm password  differs password";
+            model.addAttribute("Username", user.getUsername());
+            model.addAttribute("email", user.getEmail());
+            model.addAttribute("errorMessageD", errorMessageD);
+            return "profile";
+        }
+
+        userService.updateProfile(user, email, password);
 
         return "redirect:/main";
     }
 
     @GetMapping("/delete")
-    public String deleteUser(@RequestParam("id") Integer id,Model model)
-    {
+    public String deleteUser(@RequestParam("id") Integer id, Model model) {
         userService.delete(id);
         model.addAttribute("users", userService.findAll());
         return "Users";
@@ -97,15 +133,15 @@ public class UserController {
     @GetMapping("/subscribe/{userId}")
     public String subscribe(@AuthenticationPrincipal User currentUser,
                             @PathVariable("userId") User user
-                            ){
+    ) {
         userService.subscribeUser(currentUser, user);
         return "redirect:/messages/" + currentUser.getId();
     }
 
     @GetMapping("/unsubscribe/{userId}")
     public String unsubscribe(@AuthenticationPrincipal User currentUser,
-                            @PathVariable("userId") User user
-    ){
+                              @PathVariable("userId") User user
+    ) {
         userService.unsubscribeUser(currentUser, user);
         return "redirect:/messages/" + currentUser.getId();
     }
@@ -115,20 +151,18 @@ public class UserController {
             @PathVariable("type") String type,
             @PathVariable("user") User user,
             Model model
-    ){
+    ) {
         model.addAttribute("userChannel", user);
         model.addAttribute("type", type);
 
-        if("subscriptions".equals(type))
-        {
+        if ("subscriptions".equals(type)) {
             model.addAttribute("users", user.getSubscriptions());
-        }else{
+        } else {
             model.addAttribute("users", user.getSubscribers());
         }
 
         return "subscriptions";
     }
-
 
 
 }

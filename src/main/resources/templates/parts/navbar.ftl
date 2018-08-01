@@ -41,8 +41,16 @@
                 <a class="nav-link" href="/messages/${UserId}">My messages<span class="sr-only">(current)</span></a>
             </li>
             </#if>
+
         </ul>
-        <div class="navbar-text mr-2">${Username}</div>
+
+        <div class="navbar-text mr-3">${Username}</div>
+        <#if user??>
+        <form class="form-inline my-2 my-lg-0 " method="get" action="/main">
+            <input class="form-control mr-sm-2 " name="filter" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success mr-5 my-sm-0" type="submit">Search</button>
+        </form>
+        </#if>
         <@L.logout />
     </div>
 </nav>

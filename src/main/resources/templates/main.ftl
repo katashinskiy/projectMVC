@@ -1,14 +1,14 @@
 <#import "parts/common.ftl" as S>
 
 <@S.page>
-<div class="form-rov">
+<#--<div class="form-rov">
     <div class="form-group col-md-6">
-        <form method="get" action="/main" class="form-inline">
-            <input class="form-control " type="text" name="filter" placeholder="Search message"/>
+        <form  class="form-inline">
+            <input class="form-control " type="text" name = "filter"  placeholder="Search message"/>
             <button class="btn btn-primary ml-3" type="submit">Search</button>
         </form>
     </div>
-</div>
+</div>-->
 <a class="btn btn-primary m-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
    aria-controls="collapseExample">
     Add new message

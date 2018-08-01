@@ -79,10 +79,8 @@
 <#macro logout>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <#if user??>
-        <button class="btn btn-primary mb-2" type="submit">Sing Out</button>
-        <#else>
-         <a class="btn btn-primary mb-2" href="/login" >Log in</a>
-        </#if>
+
+        <button class="btn btn-success mr-3 my-sm-0" type="submit"><#if user??>Sing Out<#else>Log in</#if></button>
+
     </form>
 </#macro>

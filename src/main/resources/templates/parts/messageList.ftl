@@ -12,7 +12,7 @@
                 <#if M.author.id == UserId || isAdmin>
                 <a class="btn btn-primary ml-5" href="/messages/${M.author.id}?message=${M.id}">Edit</a>
                 </#if>
-                <#if isAdmin>
+                <#if isAdmin || M.author.id == UserId >
                  <form action="/main/delete" method="get" class="ml-5">
                     <button type="submit" class="btn btn-outline-danger " style="border: 0px" >—</button>
                      <input type="hidden" name="messageId" value="${M.id}"/>

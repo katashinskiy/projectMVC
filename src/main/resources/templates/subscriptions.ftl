@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as S>
 <@S.page>
-<h2>${userChannel}</h2>
+<h2 class="text-center">${userChannel.username}</h2>
 <div >${type}</div>
 <ul class="list-group">
     <#list users as User>
