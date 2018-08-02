@@ -3,6 +3,7 @@ package com.projectMVC.controller;
 
 import com.projectMVC.entity.Role;
 import com.projectMVC.entity.User;
+import com.projectMVC.entity.Valid.ValidProfile;
 import com.projectMVC.repository.UserRepository;
 import com.projectMVC.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
@@ -78,47 +81,28 @@ public class UserController {
     }
 
     @PostMapping("/profile")
-    public String editInf(@RequestParam String email,
-                          @RequestParam String password,
-                          @RequestParam String password2,
-                          @AuthenticationPrincipal User user,
+    public String editInf(@AuthenticationPrincipal User user,
+                          @Valid ValidProfile validProfile,
+                          BindingResult bindingResult,
                           Model model) {
 
-        String errorMessageD;
-        String errorMessageP1;
-        String errorMessageP2;
-
-        if (password == null || password.isEmpty()) {
-            errorMessageP1 = "Password can't be empty";
-            model.addAttribute("password2",password2);
-            model.addAttribute("errorMessageP1", errorMessageP1);
-            model.addAttribute("Username", user.getUsername());
-            model.addAttribute("email", user.getEmail());
-            if (password2 == null || password2.isEmpty()) {
-                errorMessageP2 = "Confirm password can't be empty";
-                model.addAttribute("errorMessageP2", errorMessageP2);
-            }
+        if(bindingResult.hasErrors()){
+            model.mergeAttributes(ControllerUtils.getError(bindingResult));
+            model.addAttribute("email", validProfile.getEmail());
+            model.addAttribute("password", validProfile.getPassword());
+            model.addAttribute("password2", validProfile.getPassword2());
             return "profile";
+        }else{
+            userService.updateProfile(user, validProfile.getEmail(), validProfile.getPassword());
         }
 
-        if (password2 == null || password2.isEmpty()) {
-            errorMessageP2 = "Confirm password can't be empty";
-            model.addAttribute("password",password);
-            model.addAttribute("errorMessageP2", errorMessageP2);
-            model.addAttribute("Username", user.getUsername());
-            model.addAttribute("email", user.getEmail());
+        if((validProfile.getPassword() != null && !validProfile.getPassword().isEmpty()) &&
+                (validProfile.getPassword2() != null && !validProfile.getPassword2().isEmpty()) &&
+                (!validProfile.getPassword().equals(validProfile.getPassword2()))){
+            model.addAttribute("email", validProfile.getEmail());
+            model.addAttribute("passwordError", "Confirm password different from password");
             return "profile";
         }
-
-        if (!password.equals(password2)) {
-            errorMessageD = "Confirm password  differs password";
-            model.addAttribute("Username", user.getUsername());
-            model.addAttribute("email", user.getEmail());
-            model.addAttribute("errorMessageD", errorMessageD);
-            return "profile";
-        }
-
-        userService.updateProfile(user, email, password);
 
         return "redirect:/main";
     }
