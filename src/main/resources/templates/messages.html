@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/common :: head"></head>
+<body>
+<div th:replace="/parts/navbar :: navbar"></div>
+<div class="container mt-5">
+
+    <h2 class="text-center" th:text="${userChannel.username}"></h2>
+    <div th:if="${!isCurrentUser}">
+        <div th:if="${isSubscribe}">
+            <a class="btn btn-outline-danger m-3" th:href="@{${'/Users/unsubscribe/' + userChannel.id}}"> Unsubscribe </a>
+        </div>
+        <div th:if="${!isSubscribe}">
+            <a class="btn btn-outline-success m-3" th:href="@{${'/Users/subscribe/' + userChannel.id}}"> Subscribe </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title"> Subscriptions</div>
+                        <h3 class="card-text">
+                            <a th:href="@{${'/Users/subscriptions/' + userChannel.id + '/list'}}" th:text="${subscriptionsCount}"></a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title"> Subscribers</div>
+                        <h3 class="card-text">
+                            <a th:href="@{${'/Users/subscriber/' + userChannel.id + '/list'}}" th:text="${subscriberCount}"></a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" th:if="${isCurrentUser} or ${session.isAdmin}">
+        <a class="btn btn-primary m-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+           aria-controls="collapseExample">
+            Message Editor
+        </a>
+        <div th:replace="/parts/messageEdit :: messageEdit (${message})"></div>
+    </div>
+
+    <div th:replace="/parts/MessageList :: MessageList (${messages})"></div>
+
+</div>
+
+<script th:replace="/parts/common :: footerScpipt"></script>
+</body>
+</html>

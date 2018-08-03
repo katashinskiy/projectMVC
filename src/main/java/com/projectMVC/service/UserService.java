@@ -133,4 +133,8 @@ public class UserService implements UserDetailsService{
         user.getSubscribers().remove(currentUser);
         userRepository.save(user);
     }
+
+    public User findByUserName(String name){
+        return userRepository.findByUsername(name);
+    }
 }

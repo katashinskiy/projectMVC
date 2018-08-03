@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/common :: head"></head>
+<body>
+<div th:replace="/parts/navbar :: navbar"></div>
+<div class="container mt-5">
+
+    <h2 class="text-center"> All users </h2>
+
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <td scope="col">#</td>
+            <td scope="col">User name</td>
+            <td scope="col"> User role</td>
+            <td scope="col"> Edit</td>
+            <td scope="col"> delete</td>
+
+        </tr>
+        </thead>
+
+        <tr th:each="U : ${users}">
+            <td scope="row" th:text="${U.id}"></td>
+            <td th:text="${U.username}"></td>
+            <td th:text="${U.role}">
+            </td>
+            <td><a th:href="@{${'/Users/' + U.id}}"> edit</a></td>
+            <td>
+                <form action="/Users/delete" method="get">
+                    <input type="hidden" name="id" th:value="${U.id}"/>
+                    <button class="btn btn-primary" type="submit" th:text="'delete : ' + ${U.id}"></button>
+                </form>
+            </td>
+
+
+        </tr>
+    </table>
+
+</div>
+<script th:replace="/parts/common :: footerScpipt"></script>
+</body>
+</html>

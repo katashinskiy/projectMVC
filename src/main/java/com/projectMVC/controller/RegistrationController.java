@@ -1,12 +1,9 @@
 package com.projectMVC.controller;
 
 
-import com.projectMVC.entity.Role;
 import com.projectMVC.entity.User;
 import com.projectMVC.entity.dto.CaptchaResponse;
-import com.projectMVC.repository.UserRepository;
 import com.projectMVC.service.UserService;
-import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -20,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 import java.util.Collections;
-import java.util.Map;
 
 @Controller
 public class RegistrationController {
@@ -54,6 +50,8 @@ public class RegistrationController {
 
         CaptchaResponse response = restTemplate.postForObject(url,Collections.emptyList(),CaptchaResponse.class);
 
+        model.addAttribute("user", user);
+
         if(!response.isSuccess()){
             model.addAttribute("captchaError","Fill captcha");
         }
@@ -75,7 +73,7 @@ public class RegistrationController {
         if (!userService.addUser(user)) {
             model.addAttribute("usernameError", "User exist!!!");
 
-                    return "registration";
+            return "registration";
         }
 
 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/common :: head"></head>
+<body>
+<div th:replace="/parts/navbar :: navbar"></div>
+<div class="container mt-5">
+
+    <din th:text="${session.error}? ${session.error}"></din>
+
+    <div class="alert alert-success text-center" role="alert" th:if="${message}" th:text="${message}">
+    </div>
+
+    <div class="alert alert-danger text-center" role="alert" th:if="${messageErr}" th:text="${messageErr}">
+    </div>
+
+    <div th:replace="/parts/login :: loginForm"></div>
+</div>
+<script th:replace="/parts/common :: footerScpipt"></script>
+</body>
+</html>

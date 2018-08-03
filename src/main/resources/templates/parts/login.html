@@ -1,0 +1,35 @@
+<form action="/login" method="post" th:fragment="loginForm" xmlns:th="http://www.thymeleaf.org">
+    <div class="text-center mb-3"> <h2> Sing in </h2> </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label"> User Name : </label>
+        <div class="col-sm-5">
+            <input type="text" name="username"  th:class="'form-control' + ' ' + (${usernameError}? 'is-invalid' : '')"
+             th:value="${session.currentUser}? ${session.currentUserName} : ''" placeholder="UserName"/>
+
+
+            <div class="invalid-feedback" th:if="${usernameError}" th:text="${usernameError}"></div>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label"> Password: </label>
+        <div class="col-sm-5">
+            <input  type="password" name="password" th:class="'form-control' + ' ' + (${passwordError}? 'is-invalid' : '')"
+            placeholder="Password"/>
+
+            <div class="invalid-feedback" th:if="${passwordError}" th:text="${passwordError}"></div>
+        </div>
+    </div>
+
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary" >Sign in</button>
+        </div>
+    </div>
+
+    <a href="/registration"> Add new user </a>
+</form>

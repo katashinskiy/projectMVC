@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/common :: head"></head>
+<body>
+<div th:replace="/parts/navbar :: navbar"></div>
+<div class="container mt-5">
+
+    <h2 class="text-center" th:text="${userChannel.username}"></h2>
+    <div th:text="${type}"></div>
+    <ul class="list-group" th:each="User : ${users}">
+        <li class="list-group-item">
+            <a href="/messages/${User.id}" th:text="${User.username}"></a>
+        </li>
+    </ul>
+</div>
+<script th:replace="/parts/common :: footerScpipt"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<form method="post" id="collapseExample" class="collapse <#if message??>show</#if>" th:fragment="messageEdit (message)"
+      xmlns:th="http://www.thymeleaf.org">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Input text:</label>
+        <div class="col-sm-4">
+            <input th:class="'form-control' + ' ' + (${textError}? 'is-invalid' : '' )"
+                   th:value="${message}?${message.text} : ''" type="text" name="text" placeholder="Введите текст"/>
+
+            <div class="invalid-feedback" th:if="${textError}" th:text="${textError}">
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Input tag:</label>
+        <div class="col-sm-4">
+            <input th:class="'form-control' + ' ' + (${tagError}? 'is-invalid' : '' )" type="text"
+                   th:value="${message}?${message.tag} : ''" name="tag" placeholder="Введите тег"/>
+            <div class="invalid-feedback" th:if="${tagError}" th:text="${tagError}">
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+    <input type="hidden" name="id" th:value="${message}? ${message.id}"/>
+    <button class="btn btn-primary mt-1 mb-1" type="submit"> Save</button>
+</form>
+

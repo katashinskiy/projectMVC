@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/common :: head"></head>
+<body>
+<div th:replace="/parts/navbar :: navbar"></div>
+<div class="container mt-5">
+
+    <a class="btn btn-primary m-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+       aria-controls="collapseExample">
+        Add new message
+    </a>
+    <form action="/main" method="post" id="collapseExample" th:class="'collapse' + ' ' + (${message}?'show' : '')">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Input text:</label>
+            <div class="col-sm-4">
+                <input th:class="'form-control' + ' ' + (${textError}? 'is-invalid' : '')"
+                       th:value="${message}? ${message.text}" type="text" name="text" placeholder="Введите текст"/>
+
+                <div class="invalid-feedback" th:if="${textError}" th:text="${textError}">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Input tag:</label>
+            <div class="col-sm-4">
+                <input th:class="'form-control' + ' ' + (${tagError}? 'is-invalid' : '')"
+                       th:value="${message}? ${message.tag}" type="text" name="tag" placeholder="Введите тег"/>
+                <div class="invalid-feedback" th:if="${tagError}" th:text="${tagError}">
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+        <button class="btn btn-primary mt-1 mb-1" type="submit">Save</button>
+    </form>
+
+    <div th:replace="/parts/MessageList :: MessageList (${messages})"></div>
+</div>
+<script th:replace="/parts/common :: footerScpipt"></script>
+</body>
+</html>
