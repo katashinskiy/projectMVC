@@ -116,8 +116,8 @@
     </schema>
     <schema id="28" parent="2" name="public">
       <ObjectId>42978</ObjectId>
-      <IntrospectionTimestamp>2018-08-03.12:03:37.974</IntrospectionTimestamp>
-      <IntrospectionStateNumber>395489</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-08-08.15:55:41.964</IntrospectionTimestamp>
+      <IntrospectionStateNumber>400660</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -150,7 +150,7 @@
     </table>
     <table id="35" parent="28" name="usr">
       <ObjectId>42991</ObjectId>
-      <StateNumber>395159</StateNumber>
+      <StateNumber>400657</StateNumber>
     </table>
     <column id="36" parent="30" name="id">
       <Position>1</Position>
@@ -417,12 +417,24 @@ subscriber_id</ColNames>
       <StateNumber>389613</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="76" parent="35" name="usr_pkey">
+    <column id="76" parent="35" name="phone">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>400161</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="77" parent="35" name="confirmcode">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>400657</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="78" parent="35" name="usr_pkey">
       <ObjectId>42997</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="77" parent="35" name="usr_pkey">
+    <key id="79" parent="35" name="usr_pkey">
       <ObjectId>42998</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>usr_pkey</UnderlyingIndexName>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/parts/common :: head"></head>
+<body>
+<div th:replace="/parts/navbar :: navbar"></div>
+<div class="container mt-5">
+
+
+    <div class="alert alert-success text-center" role="alert" th:if="${messageSuccess}" th:text="${messageSuccess}">
+    </div>
+
+    <div class="alert alert-danger text-center" role="alert" th:if="${messageError}" th:text="${messageError}">
+    </div>
+
+    <form action="/getCode" method="get">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> Cell Phone: </label>
+            <div class="col-sm-5">
+                <input type="tel" name="phone" th:class="'form-control' + ' ' + (${phoneError}? 'is-invalid' : '')"
+                       th:value="${oldPhone}? ${oldPhone}" placeholder="38(0XX)_______"/>
+
+                <div class="invalid-feedback" th:if="${phoneError}" th:text="${phoneError}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Get code</button>
+        </div>
+    </form>
+
+    <form action="/changePhone/number" method="get">
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> New phone number: </label>
+            <div class="col-sm-5">
+                <input type="tel" name="newPhone" th:class="'form-control' + ' ' + (${phoneError}? 'is-invalid' : '')"
+                       placeholder="38(0XX)_______"/>
+
+                <div class="invalid-feedback" th:if="${phoneError}" th:text="${phoneError}">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> Confirmation code : </label>
+            <div class="col-sm-3">
+                <input type="text" name="confirmationCode" class="form-control" placeholder="Input code"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+</div>
+<script th:replace="/parts/common :: footerScpipt"></script>
+</body>
+</html>

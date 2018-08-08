@@ -62,7 +62,6 @@ public class UserController {
             }
         }
 
-
         user.setUsername(userName);
 
         userService.update(user);
@@ -70,43 +69,7 @@ public class UserController {
         return "redirect:/Users";
     }
 
-
-    @GetMapping("/profile")
-    public String profile(Model model, @AuthenticationPrincipal User user) {
-
-        model.addAttribute("Username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
-
-        return "profile";
-    }
-
-    @PostMapping("/profile")
-    public String editInf(@AuthenticationPrincipal User user,
-                          @Valid ValidProfile validProfile,
-                          BindingResult bindingResult,
-                          Model model) {
-
-        if(bindingResult.hasErrors()){
-            model.mergeAttributes(ControllerUtils.getError(bindingResult));
-            model.addAttribute("email", validProfile.getEmail());
-            model.addAttribute("password", validProfile.getPassword());
-            model.addAttribute("password2", validProfile.getPassword2());
-            return "profile";
-        }else{
-            userService.updateProfile(user, validProfile.getEmail(), validProfile.getPassword());
-        }
-
-        if((validProfile.getPassword() != null && !validProfile.getPassword().isEmpty()) &&
-                (validProfile.getPassword2() != null && !validProfile.getPassword2().isEmpty()) &&
-                (!validProfile.getPassword().equals(validProfile.getPassword2()))){
-            model.addAttribute("email", validProfile.getEmail());
-            model.addAttribute("passwordError", "Confirm password different from password");
-            return "profile";
-        }
-
-        return "redirect:/main";
-    }
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/delete")
     public String deleteUser(@RequestParam("id") Integer id, Model model) {
         userService.delete(id);

@@ -1,4 +1,4 @@
-<form method="post" id="collapseExample" class="collapse <#if message??>show</#if>" th:fragment="messageEdit (message)"
+<form method="post" id="collapseExample" th:class="'collapse ' + (${message}?'show')" th:fragment="messageEdit (message)"
       xmlns:th="http://www.thymeleaf.org">
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Input text:</label>

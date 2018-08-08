@@ -61,6 +61,6 @@ public class MessageEditController {
         }
 
         maseggeRepository.saveAndFlush(massege);
-        return "redirect:/main";
+        return "redirect:/messages/" + massege.getAuthor().getId();
     }
 }

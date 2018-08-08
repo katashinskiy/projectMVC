@@ -40,6 +40,13 @@ public class User implements UserDetails {
     @Column(name = "activ_code")
     private String activationCode;
 
+    @Column(name = "phone")
+    @NotBlank(message = "Phone can't be empty")
+    private String phone;
+
+    @Column(name = "confirmcode")
+    private String confirmCode;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -196,5 +203,21 @@ public class User implements UserDetails {
 
     public void setSubscriptions(Set<User> subscriptions) {
         this.subscriptions = subscriptions;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getConfirmCode() {
+        return confirmCode;
+    }
+
+    public void setConfirmCode(String confirmCode) {
+        this.confirmCode = confirmCode;
     }
 }

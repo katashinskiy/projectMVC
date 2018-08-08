@@ -8,7 +8,7 @@
         <div class="card-footer text-muted input-group">
 
             <a th:href="@{${'/messages/' + M.author.id}}" th:text="${M.authorName}"> </a>
-            <a class="btn btn-primary ml-5" th:href="@{/messages/${M.author.id}(message=${M.id})}">Edit</a>
+            <a class="btn btn-primary ml-5" th:href="@{${'/messages/' + M.author.id + '?message=' + M.id}}">Edit</a>
 
             <form action="/main/delete" method="get" class="ml-5"
                   th:if="${session.isAdmin} or (${M.author.id} == ${session.currentUserId})">
