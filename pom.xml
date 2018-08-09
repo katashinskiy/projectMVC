@@ -84,6 +84,16 @@
             <version>1.7.25</version>
         </dependency>
 
+
+        <!-- ================================ DEPENDENCY FOR TELEGRAM BOT =====================================-->
+        <!-- https://mvnrepository.com/artifact/org.telegram/telegrambots -->
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <properties>
