@@ -26,7 +26,7 @@
             </td>
             <td><a th:href="@{${'/Users/' + U.id}}"> edit</a></td>
             <td>
-                <form action="/Users/delete" method="get">
+                <form th:action="@{/Users/delete}" method="get">
                     <input type="hidden" name="id" th:value="${U.id}"/>
                     <button class="btn btn-primary" type="submit" th:text="'delete : ' + ${U.id}"></button>
                 </form>

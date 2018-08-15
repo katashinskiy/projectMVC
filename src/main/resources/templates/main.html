@@ -9,7 +9,7 @@
        aria-controls="collapseExample">
         Add new message
     </a>
-    <form action="/main" method="post" id="collapseExample" th:class="'collapse' + ' ' + (${message}?'show' : '')">
+    <form th:action="@{/main}" method="post" id="collapseExample" th:class="'collapse' + ' ' + (${message}?'show' : '')">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Input text:</label>
             <div class="col-sm-4">

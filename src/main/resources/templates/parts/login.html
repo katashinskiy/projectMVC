@@ -1,4 +1,4 @@
-<form action="/login" method="post" th:fragment="loginForm" xmlns:th="http://www.thymeleaf.org">
+<form th:action="@{/login}" method="post" th:fragment="loginForm" xmlns:th="http://www.thymeleaf.org">
     <div class="text-center mb-3"> <h2> Sing in </h2> </div>
 
     <div class="form-group row">
@@ -31,5 +31,5 @@
         </div>
     </div>
 
-    <a href="/registration"> Add new user </a>
+    <a th:href="@{/registration}"> Add new user </a>
 </form>

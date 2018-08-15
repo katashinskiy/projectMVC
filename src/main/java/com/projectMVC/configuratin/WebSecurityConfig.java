@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/","/registration","/activate/*","/home","/getCode", "/changePhone").permitAll()
+                    .antMatchers("/","/registration/**","/home","/getCode", "/changePhone").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -84,10 +84,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             request.getSession().setAttribute("currentUserName", user.getUsername());
             request.getSession().setAttribute("isAdmin", user.isAdmin());
             request.getSession().setAttribute("currentUser", user != null);
+            request.getSession().setAttribute("ContextPath", request.getContextPath());
+
 
             response.setStatus(HttpServletResponse.SC_OK);
             log.info(response.getHeaderNames());
-            response.sendRedirect("/main");
+            String url = request.getContextPath() + "/main";
+            response.sendRedirect(url);
 
             System.out.println("---------------------------------" + user.getId());
             System.out.println("---------------------------------" + user.getPassword());
@@ -115,4 +118,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             }
         }
     };
+
+
+
 }

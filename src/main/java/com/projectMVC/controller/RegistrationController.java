@@ -81,14 +81,14 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
-    @GetMapping("/activate/{code}")
+    @GetMapping("/registration/activate/{code}")
     public String activatrdPage(@PathVariable String code, Model model) {
         boolean isActivated = userService.isActivated(code);
 
         if (isActivated) {
             model.addAttribute("message", "Activation Successful)))");
         } else {
-            model.addAttribute("messageErr", "Activation not successful(((");
+            model.addAttribute("messageErr", "Activation not Successful(((");
         }
         return "login";
     }

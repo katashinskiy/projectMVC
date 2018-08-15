@@ -9,7 +9,7 @@
     <div th:text="${type}"></div>
     <ul class="list-group" th:each="User : ${users}">
         <li class="list-group-item">
-            <a href="/messages/${User.id}" th:text="${User.username}"></a>
+            <a th:href="@{${'/messages/' + User.id}}" th:text="${User.username}"></a>
         </li>
     </ul>
 </div>

@@ -41,7 +41,7 @@
     </div>
 
     <div class="container" th:if="${isCurrentUser} or ${session.isAdmin}">
-        <a class="btn btn-primary m-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+        <a class="btn btn-primary m-2" data-toggle="collapse" th:href="@{#collapseExample}" role="button" aria-expanded="false"
            aria-controls="collapseExample">
             Message Editor
         </a>

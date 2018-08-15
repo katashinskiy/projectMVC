@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +28,9 @@ public class UserService implements UserDetailsService{
 
     @Autowired
     private MailSender mailSender;
+
+    @Autowired
+    private HttpServletRequest request;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
@@ -61,7 +65,7 @@ public class UserService implements UserDetailsService{
         if(!StringUtils.isEmpty(user.getEmail())){
         String message = String.format(
                 "Hello %s \n " +
-                        "Welcome to our Site. Please visit next link: http://localhost:8080/activate/%s",
+                        "Welcome to our Site. Please visit next link: "  + request.getRequestURL() + "/activate/%s",
                 user.getUsername(),user.getActivationCode()
         );
 
