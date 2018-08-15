@@ -47,8 +47,10 @@ public class UserController {
     @PostMapping
     public String editUser(
             @RequestParam Map<String, String> form,
-            @RequestParam("userId") User user,
+            @RequestParam("userId") int id,
             @RequestParam String userName) {
+
+        User user = userService.findById(id);
 
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)

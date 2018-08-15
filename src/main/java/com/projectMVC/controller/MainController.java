@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
-public class mainController {
+public class MainController {
 
     @Autowired
     private MaseggeRepository maseggeRepositiry;

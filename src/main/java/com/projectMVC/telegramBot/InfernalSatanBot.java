@@ -1,11 +1,16 @@
 package com.projectMVC.telegramBot;
 
+import com.projectMVC.entity.MessageFromBot;
+import com.projectMVC.repository.MessageFromBotRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -13,12 +18,19 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-
+@Component
 public class InfernalSatanBot  extends TelegramLongPollingBot {
+
+    private String telegramToken ="645563632:AAFmJVTTeIiwuBKiLGkP75T9VJXIagMAF6Q";
+
+    private String telegramName= "InfernalSatan_bot";
+
+    @Autowired
+    private MessageFromBotRepository messageFromBotRepository;
 
     @Override
     public String getBotToken() {
-        return "645563632:AAFmJVTTeIiwuBKiLGkP75T9VJXIagMAF6Q";
+        return telegramToken;
     }
 
     @Override
@@ -38,6 +50,9 @@ public class InfernalSatanBot  extends TelegramLongPollingBot {
                         .setCaption("Harlamov");
 
                 try {
+                    MessageFromBot fromBot = new MessageFromBot();
+                    fromBot.setMessage(sendPhoto.getPhoto().getAttachName());
+                    messageFromBotRepository.save(fromBot);
                     execute(sendPhoto);
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
@@ -56,15 +71,7 @@ public class InfernalSatanBot  extends TelegramLongPollingBot {
 
                 row.add("Button 1");
                 row.add("Button 2");
-                row.add("Button 3");
-
-                keyboardRows.add(row);
-
-                row = new KeyboardRow();
-
-                row.add("Button 4");
-                row.add("Button 5");
-                row.add("Button 6");
+                row.add("Exit");
 
                 keyboardRows.add(row);
 
@@ -79,18 +86,45 @@ public class InfernalSatanBot  extends TelegramLongPollingBot {
                 }
 
 
-            }else
-             {
+            }else if(message_text.equals("Button 1")){
 
-                SendMessage sendMessage = new SendMessage()
+                SendPhoto sendPhoto = new SendPhoto()
                         .setChatId(chat_id)
-                        .setText("I don't know what do you want from me");
+                        .setPhoto("AgADAgADN6kxG483YEtPTvTMd05JI8dWqw4ABCPQ8ykR3TkxCnoEAAEC")
+                        .setCaption("Harlamov");
 
                 try {
-                    execute(sendMessage);
+                    execute(sendPhoto);
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }
+
+            }else if(message_text.equals("/hide") || message_text.equals("Exit") ){
+
+                SendMessage message = new SendMessage();
+                ReplyKeyboardRemove remove = new ReplyKeyboardRemove();
+
+                message.setChatId(chat_id);
+                message.setText("Keyboard hidden");
+                message.setReplyMarkup(remove);
+
+                try {
+                    execute(message);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
+            }else {
+                    SendMessage message = new SendMessage();
+                    message.setChatId(chat_id);
+                    message.setText("https://www.youtube.com/results?search_query=" + message_text.replace(" ", "+"));
+
+                try {
+                    execute(message);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
             }
 
         }
@@ -137,9 +171,6 @@ public class InfernalSatanBot  extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "InfernalSatan_bot";
+        return telegramName;
     }
-
-
-
 }
