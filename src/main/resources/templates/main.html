@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/parts/common :: head"></head>
+<head th:replace="parts/common :: head"></head>
 <body>
-<div th:replace="/parts/navbar :: navbar"></div>
+<div th:replace="parts/navbar :: navbar"></div>
 <div class="container mt-5">
 
     <a class="btn btn-primary m-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
@@ -35,8 +35,8 @@
         <button class="btn btn-primary mt-1 mb-1" type="submit">Save</button>
     </form>
 
-    <div th:replace="/parts/MessageList :: MessageList (${messages})"></div>
+    <div th:replace="parts/MessageList :: MessageList (${messages})"></div>
 </div>
-<script th:replace="/parts/common :: footerScpipt"></script>
+<script th:replace="parts/common :: footerScpipt"></script>
 </body>
 </html>
